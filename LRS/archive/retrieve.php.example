@@ -1,0 +1,256 @@
+<?php
+// db.php - Database connection settings
+$host = 'localhost';
+$dbname = 'lrs_db';
+$user = 'root'; // Default XAMPP username
+$pass = ''; // Default XAMPP password
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Connection failed: ' . $e->getMessage());
+}
+
+// Get filter and sort options from the request
+$filterEmail = isset($_POST['email']) ? $_POST['email'] : '';
+$sortBy = isset($_POST['sort']) ? $_POST['sort'] : 'timestamp';
+
+// Base query
+$query = 'SELECT * FROM statements WHERE 1';
+
+// Add filtering by email if provided
+if (!empty($filterEmail)) {
+    $query .= ' AND actor LIKE :filterEmail';
+}
+
+// Add sorting
+$allowedSortColumns = ['timestamp', 'actor']; // Add other columns if needed
+if (in_array($sortBy, $allowedSortColumns)) {
+    $query .= ' ORDER BY ' . $sortBy;
+} else {
+    $query .= ' ORDER BY timestamp'; // Default sorting
+}
+
+$stmt = $pdo->prepare($query);
+
+// Bind parameters for filtering
+if (!empty($filterEmail)) {
+    $stmt->bindValue(':filterEmail', '%' . $filterEmail . '%');
+}
+
+$stmt->execute();
+$statements = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Function to format actor
+function formatActor($actor) {
+    $data = json_decode($actor, true);
+    return isset($data['name']) && isset($data['mbox']) ? "{$data['name']} ({$data['mbox']})" : 'N/A';
+}
+
+// Function to format verb
+function formatVerb($verb) {
+    $data = json_decode($verb, true);
+    return isset($data['display']['en-US']) ? $data['display']['en-US'] : 'N/A';
+}
+
+// Function to format object
+function formatObject($object) {
+    $data = json_decode($object, true);
+    return isset($data['definition']['name']['en-US']) ? $data['definition']['name']['en-US'] : 'N/A';
+}
+
+// Function to format result
+function formatResult($result) {
+    $data = json_decode($result, true);
+    if ($data === null) {
+        // No result data
+        return 'N/A';
+    }
+    // Check if success is present and return appropriate status
+    return isset($data['success']) 
+        ? ($data['success'] ? 'Succeeded' : 'Failed') 
+        : 'N/A';
+}
+
+// Function to format timestamp with selected timezone
+function formatTimestamp($timestamp, $timezone) {
+    $date = new DateTime($timestamp, new DateTimeZone('UTC'));
+    $date->setTimezone(new DateTimeZone($timezone));
+    $formattedDate = $date->format('Y-m-d H:i:s');
+    $timezoneAbbr = $date->format('T');
+    return "{$formattedDate} ({$timezoneAbbr})";
+}
+
+// Get the selected timezone from the request
+$selectedTimezone = isset($_POST['timezone']) ? $_POST['timezone'] : 'Asia/Kolkata'; // Default timezone
+
+// List of supported timezones
+$timezones = DateTimeZone::listIdentifiers();
+
+// Export functions
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+function exportToCSV($data) {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment;filename="statements.csv"');
+    
+    $output = fopen('php://output', 'w');
+    
+    fputcsv($output, ['ID', 'Statement ID', 'Actor', 'Verb', 'Object', 'Result', 'Timestamp']);
+    
+    foreach ($data as $row) {
+        fputcsv($output, [
+            $row['id'],
+            $row['statement_id'],
+            formatActor($row['actor']),
+            formatVerb($row['verb']),
+            formatObject($row['object']),
+            formatResult($row['result'] ?? 'N/A'),
+            formatTimestamp($row['timestamp'], $_POST['timezone'] ?? 'Asia/Kolkata')
+        ]);
+    }
+    
+    fclose($output);
+    exit;
+}
+
+function exportToXLSX($data) {
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+    
+    $sheet->setCellValue('A1', 'ID');
+    $sheet->setCellValue('B1', 'Statement ID');
+    $sheet->setCellValue('C1', 'Actor');
+    $sheet->setCellValue('D1', 'Verb');
+    $sheet->setCellValue('E1', 'Object');
+    $sheet->setCellValue('F1', 'Result');
+    $sheet->setCellValue('G1', 'Timestamp');
+    
+    $rowNum = 2;
+    
+    foreach ($data as $row) {
+        $sheet->setCellValue('A' . $rowNum, $row['id']);
+        $sheet->setCellValue('B' . $rowNum, $row['statement_id']);
+        $sheet->setCellValue('C' . $rowNum, formatActor($row['actor']));
+        $sheet->setCellValue('D' . $rowNum, formatVerb($row['verb']));
+        $sheet->setCellValue('E' . $rowNum, formatObject($row['object']));
+        $sheet->setCellValue('F' . $rowNum, formatResult($row['result'] ?? 'N/A'));
+        $sheet->setCellValue('G' . $rowNum, formatTimestamp($row['timestamp'], $_POST['timezone'] ?? 'Asia/Kolkata'));
+        $rowNum++;
+    }
+    
+    $writer = new Xlsx($spreadsheet);
+    
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="statements.xlsx"');
+    
+    $writer->save('php://output');
+    exit;
+}
+
+if (isset($_POST['export'])) {
+    if ($_POST['export'] === 'csv') {
+        exportToCSV($statements);
+    } elseif ($_POST['export'] === 'xlsx') {
+        exportToXLSX($statements);
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Retrieve Statements</title>
+</head>
+<body>
+    <header>
+        <h1>Retrieve Statements</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="insert.html">Insert Statement</a>
+            <a href="update_verbs.php">Update Verbs</a>
+        </nav>
+    </header>
+    <div class="container">
+        <main class="main-content">
+            <h2>Statements Table</h2>
+            <!-- Timezone selection form -->
+            <form method="post" action="retrieve.php">
+                <label for="timezone">Select Timezone:</label>
+                <select id="timezone" name="timezone">
+                    <?php foreach ($timezones as $timezone): ?>
+                        <option value="<?php echo htmlspecialchars($timezone); ?>" <?php echo ($timezone === $selectedTimezone) ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($timezone); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit">Apply</button>
+            </form>
+
+            <!-- Filtering and sorting form -->
+            <form method="post" action="retrieve.php">
+                <label for="email">Filter by Email:</label>
+                <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($filterEmail); ?>">
+
+                <label for="sort">Sort by:</label>
+                <select id="sort" name="sort">
+                    <option value="timestamp" <?php echo ($sortBy === 'timestamp') ? 'selected' : ''; ?>>Timestamp</option>
+                    <option value="actor" <?php echo ($sortBy === 'actor') ? 'selected' : ''; ?>>Actor</option>
+                    <!-- Add other options as needed -->
+                </select>
+
+                <button type="submit">Apply</button>
+            </form>
+
+             <!-- Export buttons -->
+             <form method="post" action="retrieve.php" style="margin-top: 20px;">
+                <input type="hidden" name="export" value="csv">
+                <button type="submit">Export as CSV</button>
+            </form>
+            <form method="post" action="retrieve.php" style="margin-top: 10px;">
+                <input type="hidden" name="export" value="xlsx">
+                <button type="submit">Export as XLSX</button>
+            </form>
+
+
+            <?php if (!empty($statements)): ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Statement ID</th>
+                            <th>Actor</th>
+                            <th>Verb</th>
+                            <th>Object</th>
+                            <th>Result</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($statements as $statement): ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($statement['id']); ?></td>
+                                <td><?php echo htmlspecialchars($statement['statement_id']); ?></td>
+                                <td><?php echo formatActor($statement['actor']); ?></td>
+                                <td><?php echo formatVerb($statement['verb']); ?></td>
+                                <td><?php echo formatObject($statement['object']); ?></td>
+                                <td><?php echo formatResult($statement['result'] ?? 'N/A'); ?></td>
+                                <td><?php echo formatTimestamp($statement['timestamp'], $selectedTimezone); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No statements found.</p>
+            <?php endif; ?>
+        </main>
+    </div>
+</body>
+</html>

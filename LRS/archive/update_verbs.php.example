@@ -1,0 +1,79 @@
+<?php
+require 'db.php'; // Database connection
+
+// xAPI endpoint and credentials
+$endpoint = 'http://localhost/lrs/api.php/statements'; // Replace with your actual endpoint
+$auth = 'Basic ' . base64_encode('root:'); // Replace 'root:' with your actual credentials
+
+// Fetch xAPI statements from the endpoint
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $endpoint . '/statements');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Authorization: ' . $auth
+));
+$response = curl_exec($ch);
+
+// Check for cURL errors
+if (curl_errno($ch)) {
+    die('cURL error: ' . curl_error($ch));
+}
+curl_close($ch);
+
+// Decode the JSON response
+$statements = json_decode($response, true);
+
+// Check if the JSON decoding was successful
+if (json_last_error() !== JSON_ERROR_NONE) {
+    die('JSON decode error: ' . json_last_error_msg());
+}
+
+// Update verbs in the database
+if (!empty($statements['statements'])) {
+    foreach ($statements['statements'] as $statement) {
+        // Ensure the 'verb' key exists
+        if (isset($statement['verb']['id']) && isset($statement['verb']['display']['en-US'])) {
+            $verbId = $statement['verb']['id'];
+            $verbName = $statement['verb']['display']['en-US'];
+
+            $sql = "INSERT INTO verbs (verb_id, verb_name) VALUES (?, ?) 
+                    ON DUPLICATE KEY UPDATE verb_name = VALUES(verb_name)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$verbId, $verbName]);
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Update Verbs</title>
+</head>
+<body>
+    <header>
+        <h1>Update Verbs</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="insert.html">Insert Statement</a>
+            <a href="retrieve.php">Retrieve Statements</a>
+        </nav>
+    </header>
+    <div class="container">
+        <aside>
+            <ul>
+                <li><a href="insert.html">Insert Statement</a></li>
+                <li><a href="retrieve.php">Retrieve Statements</a></li>
+                <li><a href="update_verbs.php">Update Verbs</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Update Status</h2>
+            <p>Verbs updated successfully.</p>
+        </main>
+    </div>
+</body>
+</html>

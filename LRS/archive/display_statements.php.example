@@ -1,0 +1,21 @@
+<?php
+require 'db.php'; // Ensure this includes your database connection setup
+
+$sql = "SELECT statement_id, actor, verb, object, result, timestamp FROM statements";
+$stmt = $pdo->query($sql);
+
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    $actor = json_decode($row['actor'], true);
+    $verb = json_decode($row['verb'], true);
+    $object = json_decode($row['object'], true);
+    $result = json_decode($row['result'], true);
+
+    // Example: Displaying data
+    echo "Statement ID: " . $row['statement_id'] . "<br>";
+    echo "Actor Name: " . $actor['name'] . "<br>";
+    echo "Verb: " . $verb['display']['en-US'] . "<br>";
+    echo "Object ID: " . $object['id'] . "<br>";
+    echo "Result: " . (is_array($result) ? json_encode($result) : $result) . "<br>";
+    echo "Timestamp: " . $row['timestamp'] . "<br><br>";
+}
+?>

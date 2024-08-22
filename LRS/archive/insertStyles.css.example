@@ -1,0 +1,101 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; /* Adjust this value as needed */
+    margin: 0 auto; /* Center the form */
+    padding: 20px; /* Add padding around the form */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visibility */
+    background-color: #f9f9f9; /* Light background color for the form */
+    border-radius: 8px; /* Rounded corners */
+}
+
+label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    font-weight: bold; /* Make labels stand out */
+}
+
+input[type="text"],
+textarea {
+    padding: 12px; /* Increase padding for better usability */
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Slightly rounded corners */
+    font-size: 1em;
+    margin-bottom: 20px; /* Increased spacing between fields */
+    width: calc(100% - 24px); /* Adjust width to account for padding */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+textarea {
+    height: 120px; /* Increased height for better visibility */
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px 20px; /* Adjust padding for a better button size */
+    border-radius: 6px; /* Rounded corners */
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center; /* Center the button */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

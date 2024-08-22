@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - LRS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="variables.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="images/logo.png" alt="Brand Logo" class="logo">
+            <h1><a href="index.html" style="color: white; text-decoration: none;">Discovery LRS</a></h1>
+        </div>
+        <nav>
+            <a href="insert.html">Insert Statement</a>
+            <a href="retrieve.php">View Statements</a>
+        </nav>
+    </header>
+    <div class="intro-section">
+        <h1>A Lightweight Learning Record Store (LRS)</h1>
+        <p>Easily manage your xAPI statements with this intuitive LRS interface. Use the sections below to retrieve, insert, or update your data.</p>
+        <div class="cards-container">
+            <div class="card">
+                <i class="fas fa-database"></i>
+                <h2><a href="retrieve.php">View Statements</a></h2>
+                <p>View, filter, and export all the recorded xAPI statements from learners.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-plus-circle"></i>
+                <h2><a href="insert.html">Insert Statement</a></h2>
+                <p>Add new xAPI statements to the database to record offline activities.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-sync-alt"></i>
+                <h2><a href="update_verbs.php">Update Verbs</a></h2>
+                <p>Update verbs from xAPI statements to keep your list current.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 <a href="https://lukosejoseph.com" target="_blank" rel="noopener noreferrer">LukoseJoseph.com</a>. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

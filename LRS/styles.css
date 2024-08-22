@@ -1,0 +1,530 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--primary-color-dark);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--primary-color-dark);
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-color);
+    color: var(--text-color-light);
+    padding: 8px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    box-shadow: 0 2px 15px var(--box-shadow-color);
+    box-sizing: border-box;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between logo and header text */
+}
+
+.logo {
+    height: 40px; /* Adjust based on your logo's aspect ratio */
+    width: auto; /* Maintain aspect ratio */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: var(--text-color-light);
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+header h1:hover {
+    transform: translateY(-1px);
+    color: var(--primary-color-dark);
+}
+
+header nav {
+    display: flex;
+    gap: 25px;
+}
+
+header nav a {
+    color: var(--text-color-light);
+    font-size: 1em;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 300;
+}
+
+header nav a:hover {
+    color: var(--primary-color-dark);
+    transform: translateY(-3px);
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color-dark);
+    left: 0;
+    bottom: -6px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+header nav a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    margin: 100px auto 80px;
+    max-width: 1200px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    padding-bottom: 20px;
+}
+
+/* Sidebar Styles */
+aside {
+    width: 250px;
+    background-color: rgba(31, 38, 135, 0.7);
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside ul li {
+    margin-bottom: 15px;
+}
+
+aside ul li a {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+aside ul li a:hover {
+    color: var(--primary-color-dark);
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.main-content h2 {
+    font-size: 2em;
+    margin-top: 0;
+    color: var(--primary-color-dark);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    table-layout: auto;
+    white-space: nowrap;
+    color: var(--text-color);
+    background: var(--background-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid var(--border-color);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+th {
+    background-color: var(--primary-color-dark);
+    color: var(--text-color-light);
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+tbody tr:hover {
+    background-color: var(--accent-color);
+}
+
+/* Button Styles */
+button {
+    background-color: var(--primary-color-dark);
+    color: var(--text-color-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* Ensure button is aligned normally */
+    vertical-align: middle;
+}
+
+button i {
+    font-size: 1.2em;
+}
+
+button:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px); /* Slightly higher position on hover */
+}
+
+/* Dropdown and Input Styles */
+select, input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for readability */
+    color: var(--text-color);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="white" d="M7 10l5 5 5-5z"/></svg>'); /* Custom arrow */
+}
+
+select:focus, input[type="text"]:focus {
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+}
+
+select option {
+    background-color: #333; /* Darker background for options */
+    color: var(--text-color); /* Light text color for contrast */
+}
+
+select option:hover {
+    background-color: #444; /* Slightly lighter background on hover */
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Adds space between form elements */
+    margin-bottom: 20px; /* Adds space below the form */
+    align-items: center; /* Align items vertically for a balanced look */
+}
+
+label {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-right: 10px; /* Adds space between label and input */
+    color: var(--text-color);
+}
+
+input[type="text"],
+select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: rgba(var(--primary-color), 0.7);
+    color: var(--text-color);
+    font-size: 0.8em;
+    flex: 1; /* Allows inputs to expand and fill the available space */
+    margin-right: 10px; /* Adds space between elements */
+    max-width: 300px; /* Controls the width of text inputs */
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color-dark);
+    color: var(--text-color-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-color);
+}
+
+/* Insert.html Form Styles */
+/* General Styles for Forms in insert.html */
+.insert-form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto 80px;
+    max-width: 800px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+}
+
+/* Insert Form Title */
+.insert-form-title {
+    font-size: 2em;
+    color: var(--primary-color-dark);
+    margin-bottom: 20px;
+    text-align: left; /* Align title to the left */
+    margin-top: 5px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 20px;
+    align-items: normal;
+}
+
+/* Insert Form Styles */
+.insert-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.form-input,
+.form-textarea {
+    width: calc(100% - 20px); /* Full width with padding adjustment */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-size: 1em;
+    box-sizing: border-box;
+    max-width: 800px !important;
+}
+
+.form-textarea {
+    resize: vertical;
+    height: 36px;
+}
+
+/* Remove Dropdown Arrow */
+select, input[type="text"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.form-button {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center; /* Center align button */
+}
+
+.form-button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+
+.sort-group {
+    display: block;
+    margin-top: 10px; /* Optional: Adds space above the "Sort by:" section */
+}
+
+
+/* Intro Section Styles */
+.intro-section {
+    text-align: center;
+    margin: 100px auto 80px;
+    max-width: 1200px;
+    padding: 2rem;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.intro-section h1 {
+    font-size: 2rem;
+    color: var(--primary-color-dark);
+    margin-bottom: 0.5rem;
+}
+
+.intro-section p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Cards Container Styles */
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 1rem;
+}
+
+.card {
+    background-color: var(--primary-color-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--box-shadow-color);
+    margin: 1rem;
+    width: 300px;
+    text-align: center;
+    padding: 2rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    z-index: 0;
+    pointer-events: none;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px var(--box-shadow-color);
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.card a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    display: inline-block;
+    margin: 0.5rem 0;
+    transition: color 0.3s, transform 0.3s;
+    position: relative;
+}
+
+.card a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s;
+}
+
+.card a:hover {
+    color: var(--primary-color-dark);
+    transform: translateY(-2px);
+}
+
+.card a:hover::after {
+    width: 100%;
+}
+
+.card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color-dark);
+    transition: color 0.3s;
+}
+
+.card i:hover {
+    color: var(--primary-color-dark);
+}
+
+
+/* Footer Styles */
+footer {
+    background: var(--primary-color);
+    color: var(--text-color-light);
+    text-align: center;
+    padding: 1px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+footer a {
+    color: var(--text-color-light); /* Sets the link color to white */
+    text-decoration: none; /* Removes underline from the link */
+}
+
+footer a:hover {
+    color: rgba(255, 255, 255, 0.9); /* Optional: Change color on hover for better user experience */
+    text-decoration: underline; /* Optional: Underline on hover for better visibility */
+}

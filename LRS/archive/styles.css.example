@@ -1,0 +1,142 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling of the body */
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Header Styles */
+header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 1.2em;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    margin: 20px auto;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Sidebar Styles */
+aside {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+aside ul li a {
+    color: #007BFF;
+    font-size: 1.1em;
+}
+
+aside ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.main-content h2 {
+    font-size: 1.8em;
+    margin-top: 0;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    table-layout: auto; /* Let the table cells adjust naturally */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    word-wrap: break-word; /* Allow word wrapping within cells */
+}
+
+th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #eaeaea;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 0.002rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
