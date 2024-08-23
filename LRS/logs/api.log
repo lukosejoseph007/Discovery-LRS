@@ -1,0 +1,2841 @@
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:25.095Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 9eb28d2e-9df5-496b-a3f9-32d97383ef59
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:25.445Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 799de5b4-4c85-49aa-8889-c9b9d4b38e54
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T01:49:26.100Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 2c428414-6998-4d22-a92b-fedca0d09cf3
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://id.tincanapi.com/verb/viewed
+            [display] => Array
+                (
+                    [en-US] => viewed
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/cheatsheat
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+        )
+
+    [timestamp] => 2024-08-23T01:49:26.780Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 3e9676be-cd6a-4672-abf0-f94cb44add72
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:28.207Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 3c8459bf-5f2a-4c58-91f2-6893b6229892
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:28.651Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 12755a6e-4389-4ab9-a745-a5eea72bd32e
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T01:49:29.165Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 337564d1-f03a-40a9-a83c-884e9c7f0e4a
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://id.tincanapi.com/verb/viewed
+            [display] => Array
+                (
+                    [en-US] => viewed
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/cheatsheat
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+        )
+
+    [timestamp] => 2024-08-23T01:49:29.947Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 1993f5dc-cf93-4c03-a1db-43804c6e9b3e
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:38.173Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 7bc5e978-ed36-4166-981e-230fbced0433
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:38.542Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => dbd77c3f-efe5-4cc0-b829-4b54395feefd
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T01:49:39.040Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 56434aed-5929-45c3-9586-1ea228a36bf5
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://id.tincanapi.com/verb/viewed
+            [display] => Array
+                (
+                    [en-US] => viewed
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/cheatsheat
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+        )
+
+    [timestamp] => 2024-08-23T01:49:39.757Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => a8065287-fb08-477d-9ff2-4a2175019755
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:41.139Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 3c6f2dc5-adbb-46d8-b0a8-511b6a3e61ee
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:41.530Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => f0bafba1-434b-4af4-b37b-99473762baa5
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T01:49:42.053Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 2e1eb5e9-c436-4da1-ac7f-08ca4497d3e5
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:42.450Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => e7149238-96a7-4dfe-8ff0-9b77b5f93785
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:42.893Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => acaee36d-25cc-4091-80d9-4a191545ad0b
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:43.272Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => b5226aae-9908-4c48-9e10-d07137c614b4
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T01:49:43.656Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 3ca4043b-4a8e-4dbf-bd4d-88274b474814
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:44.049Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => cae70aba-7dad-433f-82f8-6492fd1ed759
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:44.414Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 459960ff-bf70-43db-809d-b064dd2e087f
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:44.827Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 0338ce40-97f2-4c03-8d88-7d3f2d9d1a06
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T01:49:45.185Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 942bd5d8-6512-4d70-9993-b87235479f61
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:45.550Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => cceae4d1-d18c-4207-a743-9797f846811f
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:45.937Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 18a3e108-d3b1-46da-af3f-fe9d0bc97643
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T01:49:46.871Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 6d9cfc40-eb82-4002-a828-82189c952aad
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T01:49:47.252Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => c9b46978-5d04-4e71-9ca8-f2abc3db7988
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T02:22:22.238Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 942491d3-a64e-4a6b-845c-589535976552
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T02:22:22.764Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 649e1925-3879-40a7-bc6a-c35b7645b1e9
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T02:22:23.126Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 4652507a-0c48-447c-8f67-aa9533fd48fb
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://id.tincanapi.com/verb/viewed
+            [display] => Array
+                (
+                    [en-US] => viewed
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/cheatsheat
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+        )
+
+    [timestamp] => 2024-08-23T02:22:23.761Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 707a50ed-4768-4064-9267-87114043c65c
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T02:25:04.111Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 2030f54c-536e-4932-916c-aee9e386ac0d
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T02:25:04.508Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 1e093c42-a626-437b-924d-76bddd630379
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T02:25:04.956Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 154b9f98-abc1-4b9e-b049-e94bf4a4f542
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://id.tincanapi.com/verb/viewed
+            [display] => Array
+                (
+                    [en-US] => viewed
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/cheatsheat
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+        )
+
+    [timestamp] => 2024-08-23T02:25:05.583Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => e35cff8c-57dc-4eda-9284-cc2abb8becba
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-b
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice B
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T02:25:30.407Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 0342f936-e14a-4383-823c-757561adc6f6
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-a
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice A
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 
+        )
+
+    [timestamp] => 2024-08-23T02:25:30.757Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => d20f40fe-3eee-4ad8-8f82-4ea6f9039c57
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://adlnet.gov/expapi/verbs/answered
+            [display] => Array
+                (
+                    [en-US] => answered
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/choice-c
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Choice C
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+            [success] => 1
+        )
+
+    [timestamp] => 2024-08-23T02:25:31.278Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => dc9f31c8-b9ae-4484-b2fa-639089673727
+)
+Received input: Array
+(
+    [actor] => Array
+        (
+            [name] => Lukose
+            [mbox] => mailto:lukose@example.com
+        )
+
+    [verb] => Array
+        (
+            [id] => http://id.tincanapi.com/verb/viewed
+            [display] => Array
+                (
+                    [en-US] => viewed
+                )
+
+        )
+
+    [object] => Array
+        (
+            [id] => https://www.example.com/cheatsheat
+            [objectType] => Activity
+            [definition] => Array
+                (
+                    [name] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                    [description] => Array
+                        (
+                            [en-US] => Cheatsheet
+                        )
+
+                )
+
+        )
+
+    [result] => Array
+        (
+        )
+
+    [timestamp] => 2024-08-23T02:25:31.925Z
+    [context] => Array
+        (
+            [contextActivities] => Array
+                (
+                    [parent] => Array
+                        (
+                            [0] => Array
+                                (
+                                    [id] => COURSE1234
+                                    [objectType] => Activity
+                                    [definition] => Array
+                                        (
+                                            [name] => Array
+                                                (
+                                                    [en-US] => Introduction to XAPI
+                                                )
+
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [id] => 688fa3d3-cb56-4b88-b310-65e000c04072
+)

@@ -124,7 +124,7 @@ header nav a:hover::after {
 .container {
     display: flex;
     margin: 100px auto 80px;
-    max-width: 1200px;
+    max-width: 1400px;
     background-color: var(--background-color);
     border-radius: 12px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -167,12 +167,19 @@ aside ul li a:hover {
     flex: 1;
     padding: 20px;
     overflow-x: auto;
+    color: var(--background-color-dark);
 }
 
 .main-content h2 {
     font-size: 2em;
     margin-top: 0;
     color: var(--primary-color-dark);
+}
+
+.main-content h3 {
+    font-size: 1.1em;
+    margin-top: 50px;
+    color: var(--text-color-dark);
 }
 
 /* Table Styles */
@@ -239,9 +246,8 @@ button:hover {
 /* Dropdown and Input Styles */
 select, input[type="text"] {
     padding: 10px;
-    border-radius: 5px;
     border: 1px solid var(--border-color);
-    background-color: rgba(0, 0, 0, 0.7); /* Darker background for readability */
+    background-color: var(--primary-color-dark); /* Darker background for readability */
     color: var(--text-color);
     transition: border-color 0.3s ease, background-color 0.3s ease;
     appearance: none; /* Remove default dropdown arrow */
@@ -252,7 +258,7 @@ select, input[type="text"] {
 }
 
 select {
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="white" d="M7 10l5 5 5-5z"/></svg>'); /* Custom arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="black" d="M7 10l5 5 5-5z"/></svg>'); /* Custom arrow */
 }
 
 select:focus, input[type="text"]:focus {
@@ -280,7 +286,7 @@ form {
 }
 
 label {
-    font-size: 1.1em;
+    font-size: 0.9em;
     font-weight: 500;
     margin-right: 10px; /* Adds space between label and input */
     color: var(--text-color);
@@ -288,12 +294,12 @@ label {
 
 input[type="text"],
 select {
-    padding: 8px 12px;
+    padding: 8px 20px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     background-color: rgba(var(--primary-color), 0.7);
     color: var(--text-color);
-    font-size: 0.8em;
+    font-size: 0.7em;
     flex: 1; /* Allows inputs to expand and fill the available space */
     margin-right: 10px; /* Adds space between elements */
     max-width: 300px; /* Controls the width of text inputs */
@@ -515,6 +521,26 @@ select, input[type="text"] {
     margin-bottom: 1rem;
     color: var(--primary-color-dark);
     transition: color 0.3s;
+}
+
+
+/* Style for the pagination form */
+#paginationForm {
+    width: 100%; /* Adjust width as needed */
+    padding: 20px;
+    border-radius: 8px;
+    justify-content: center;
+}
+
+/* Style for pagination links */
+.pagination a {
+    text-decoration: none;
+    color: var(--primary-color-dark);
+    margin: 0 5px;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
 }
 
 

@@ -16,38 +16,42 @@ try {
 $filterEmail = isset($_POST['email']) ? $_POST['email'] : '';
 $filterActor = isset($_POST['actor']) ? $_POST['actor'] : '';
 $filterVerb = isset($_POST['verb']) ? $_POST['verb'] : '';
+$filterCourse = isset($_POST['courseName']) ? $_POST['courseName'] : '';
 $sortBy = isset($_POST['sort']) ? $_POST['sort'] : 'timestamp';
 $sortOrder = isset($_POST['sortOrder']) ? $_POST['sortOrder'] : 'ASC'; // Default to ascending
 $rowLimit = isset($_POST['rowLimit']) ? intval($_POST['rowLimit']) : 10; // Default to 10 rows
+$currentPage = isset($_POST['page']) ? intval($_POST['page']) : 1; // Default to page 1
+
+// Calculate offset
+$offset = ($currentPage - 1) * $rowLimit;
 
 // Base query
-$query = 'SELECT * FROM statements WHERE 1';
+$query = 'SELECT id, statement_id, actor, verb, object, result, timestamp, context, courseName, courseId FROM statements WHERE 1';
 
-// Add filtering by email if provided
+// Add filtering conditions
 if (!empty($filterEmail)) {
     $query .= ' AND email LIKE :filterEmail';
 }
-
-// Add filtering by actor if provided
 if (!empty($filterActor)) {
     $query .= ' AND actor LIKE :filterActor';
 }
-
-// Add filtering by verb if provided
 if (!empty($filterVerb)) {
     $query .= ' AND verb LIKE :filterVerb';
 }
+if (!empty($filterCourse)) {
+    $query .= ' AND courseName LIKE :filterCourse';
+}
 
 // Add sorting
-$allowedSortColumns = ['timestamp', 'actor']; // Add other columns if needed
+$allowedSortColumns = ['timestamp', 'actor', 'courseName', 'courseId'];
 if (in_array($sortBy, $allowedSortColumns)) {
     $query .= ' ORDER BY ' . $sortBy . ' ' . $sortOrder;
 } else {
-    $query .= ' ORDER BY timestamp ' . $sortOrder; // Default sorting
+    $query .= ' ORDER BY timestamp ' . $sortOrder;
 }
 
-// Apply row limit
-$query .= ' LIMIT :rowLimit';
+// Apply row limit and offset
+$query .= ' LIMIT :offset, :rowLimit'; // Correct usage
 
 $stmt = $pdo->prepare($query);
 
@@ -61,45 +65,79 @@ if (!empty($filterActor)) {
 if (!empty($filterVerb)) {
     $stmt->bindValue(':filterVerb', '%' . $filterVerb . '%');
 }
+if (!empty($filterCourse)) {
+    $stmt->bindValue(':filterCourse', '%' . $filterCourse . '%');
+}
 
-// Bind parameter for row limit
-$stmt->bindValue(':rowLimit', $rowLimit, PDO::PARAM_INT);
+// Bind parameters for row limit and offset
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT); // Bind offset as first parameter
+$stmt->bindValue(':rowLimit', $rowLimit, PDO::PARAM_INT); // Bind row limit as second parameter
 
 $stmt->execute();
 $statements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Function to format actor
+// Pagination logic
+$totalQuery = 'SELECT COUNT(*) FROM statements WHERE 1';
+if (!empty($filterEmail)) {
+    $totalQuery .= ' AND email LIKE :filterEmail';
+}
+if (!empty($filterActor)) {
+    $totalQuery .= ' AND actor LIKE :filterActor';
+}
+if (!empty($filterVerb)) {
+    $totalQuery .= ' AND verb LIKE :filterVerb';
+}
+if (!empty($filterCourse)) {
+    $totalQuery .= ' AND courseName LIKE :filterCourse';
+}
+
+$totalStmt = $pdo->prepare($totalQuery);
+
+// Bind parameters for filtering
+if (!empty($filterEmail)) {
+    $totalStmt->bindValue(':filterEmail', '%' . $filterEmail . '%');
+}
+if (!empty($filterActor)) {
+    $totalStmt->bindValue(':filterActor', '%' . $filterActor . '%');
+}
+if (!empty($filterVerb)) {
+    $totalStmt->bindValue(':filterVerb', '%' . $filterVerb . '%');
+}
+if (!empty($filterCourse)) {
+    $totalStmt->bindValue(':filterCourse', '%' . $filterCourse . '%');
+}
+
+$totalStmt->execute();
+$totalRows = $totalStmt->fetchColumn();
+$totalPages = ceil($totalRows / $rowLimit);
+
+// Functions for formatting
 function formatActor($actor) {
     $data = json_decode($actor, true);
     return isset($data['name']) && isset($data['mbox']) ? "{$data['name']} ({$data['mbox']})" : 'N/A';
 }
 
-// Function to format verb
 function formatVerb($verb) {
     $data = json_decode($verb, true);
     return isset($data['display']['en-US']) ? $data['display']['en-US'] : 'N/A';
 }
 
-// Function to format object
 function formatObject($object) {
     $data = json_decode($object, true);
     return isset($data['definition']['name']['en-US']) ? $data['definition']['name']['en-US'] : 'N/A';
 }
 
-// Function to format result
 function formatResult($result) {
     $data = json_decode($result, true);
     if ($data === null) {
-        // No result data
         return 'N/A';
     }
-    // Check if success is present and return appropriate status
-    return isset($data['success']) 
-        ? ($data['success'] ? 'Succeeded' : 'Failed') 
-        : 'N/A';
+    if (isset($data['success'])) {
+        return $data['success'] ? 'Passed' : 'Failed';
+    }
+    return 'N/A';
 }
 
-// Function to format timestamp with selected timezone
 function formatTimestamp($timestamp, $timezone) {
     $date = new DateTime($timestamp, new DateTimeZone('UTC'));
     $date->setTimezone(new DateTimeZone($timezone));
@@ -108,11 +146,34 @@ function formatTimestamp($timestamp, $timezone) {
     return "{$formattedDate} ({$timezoneAbbr})";
 }
 
-// Get the selected timezone from the request
 $selectedTimezone = isset($_POST['timezone']) ? $_POST['timezone'] : 'Asia/Kolkata'; // Default timezone
 
 // List of supported timezones
 $timezones = DateTimeZone::listIdentifiers();
+
+function extractCourseData($context) {
+    $data = json_decode($context, true);
+    $courseId = 'N/A';
+    $courseName = 'N/A';
+    
+    if (isset($data['contextActivities']['parent'][0]['id'])) {
+        $courseId = $data['contextActivities']['parent'][0]['id'];
+    }
+    if (isset($data['contextActivities']['parent'][0]['definition']['name']['en-US'])) {
+        $courseName = $data['contextActivities']['parent'][0]['definition']['name']['en-US'];
+    }
+    
+    return ['courseId' => $courseId, 'courseName' => $courseName];
+}
+
+// Process statements and extract course data
+$processedStatements = [];
+foreach ($statements as $row) {
+    $courseData = extractCourseData($row['context']);
+    $row['courseId'] = $courseData['courseId'];
+    $row['courseName'] = $courseData['courseName'];
+    $processedStatements[] = $row;
+}
 
 // Export functions
 require 'vendor/autoload.php';
@@ -126,7 +187,7 @@ function exportToCSV($data) {
     
     $output = fopen('php://output', 'w');
     
-    fputcsv($output, ['ID', 'Statement ID', 'Actor', 'Verb', 'Object', 'Result', 'Timestamp']);
+    fputcsv($output, ['ID', 'Statement ID', 'Actor', 'Verb', 'Object', 'Result', 'Timestamp', 'Course ID', 'Course Name']);
     
     foreach ($data as $row) {
         fputcsv($output, [
@@ -136,7 +197,9 @@ function exportToCSV($data) {
             formatVerb($row['verb']),
             formatObject($row['object']),
             formatResult($row['result'] ?? 'N/A'),
-            formatTimestamp($row['timestamp'], $_POST['timezone'] ?? 'Asia/Kolkata')
+            formatTimestamp($row['timestamp'], $_POST['timezone'] ?? 'Asia/Kolkata'),
+            htmlspecialchars($row['courseId'] ?? 'N/A'),
+            htmlspecialchars($row['courseName'] ?? 'N/A')
         ]);
     }
     
@@ -155,35 +218,37 @@ function exportToXLSX($data) {
     $sheet->setCellValue('E1', 'Object');
     $sheet->setCellValue('F1', 'Result');
     $sheet->setCellValue('G1', 'Timestamp');
+    $sheet->setCellValue('H1', 'Course ID');
+    $sheet->setCellValue('I1', 'Course Name');
     
-    $rowNum = 2;
-    
+    $rowIndex = 2;
     foreach ($data as $row) {
-        $sheet->setCellValue('A' . $rowNum, $row['id']);
-        $sheet->setCellValue('B' . $rowNum, $row['statement_id']);
-        $sheet->setCellValue('C' . $rowNum, formatActor($row['actor']));
-        $sheet->setCellValue('D' . $rowNum, formatVerb($row['verb']));
-        $sheet->setCellValue('E' . $rowNum, formatObject($row['object']));
-        $sheet->setCellValue('F' . $rowNum, formatResult($row['result'] ?? 'N/A'));
-        $sheet->setCellValue('G' . $rowNum, formatTimestamp($row['timestamp'], $_POST['timezone'] ?? 'Asia/Kolkata'));
-        $rowNum++;
+        $sheet->setCellValue('A' . $rowIndex, $row['id']);
+        $sheet->setCellValue('B' . $rowIndex, $row['statement_id']);
+        $sheet->setCellValue('C' . $rowIndex, formatActor($row['actor']));
+        $sheet->setCellValue('D' . $rowIndex, formatVerb($row['verb']));
+        $sheet->setCellValue('E' . $rowIndex, formatObject($row['object']));
+        $sheet->setCellValue('F' . $rowIndex, formatResult($row['result'] ?? 'N/A'));
+        $sheet->setCellValue('G' . $rowIndex, formatTimestamp($row['timestamp'], $_POST['timezone'] ?? 'Asia/Kolkata'));
+        $sheet->setCellValue('H' . $rowIndex, htmlspecialchars($row['courseId'] ?? 'N/A'));
+        $sheet->setCellValue('I' . $rowIndex, htmlspecialchars($row['courseName'] ?? 'N/A'));
+        $rowIndex++;
     }
     
     $writer = new Xlsx($spreadsheet);
-    
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     header('Content-Disposition: attachment;filename="statements.xlsx"');
-    
     $writer->save('php://output');
     exit;
 }
 
-if (isset($_POST['export'])) {
-    if ($_POST['export'] === 'csv') {
-        exportToCSV($statements);
-    } elseif ($_POST['export'] === 'xlsx') {
-        exportToXLSX($statements);
-    }
+// Handle export request
+if (isset($_POST['export']) && $_POST['export'] === 'csv') {
+    exportToCSV($processedStatements);
+}
+
+if (isset($_POST['export']) && $_POST['export'] === 'xlsx') {
+    exportToXLSX($processedStatements);
 }
 ?>
 
@@ -203,12 +268,11 @@ if (isset($_POST['export'])) {
 <body>
     <header>
         <div class="header-content">
-            <img src="images\logo.png" alt="Brand Logo" class="logo">
+            <img src="images/logo.png" alt="Brand Logo" class="logo">
             <h1 class="logo-text"><a href="index.html">Discovery LRS</a></h1>
         </div>
         <nav>
-        <a href="insert.html">Insert Statement</a>
-        <a href="retrieve.php">View Statements</a>
+            <a href="retrieve.php">View Statements</a>
         </nav>
     </header>
     <div class="container">
@@ -219,68 +283,76 @@ if (isset($_POST['export'])) {
                 <label for="timezone">Select Timezone:</label>
                 <select id="timezone" name="timezone">
                     <?php foreach ($timezones as $timezone): ?>
-                        <option value="<?php echo htmlspecialchars($timezone); ?>" <?php echo ($timezone === $selectedTimezone) ? 'selected' : ''; ?>>
-                            <?php echo htmlspecialchars($timezone); ?>
-                        </option>
+                        <option value="<?= $timezone ?>" <?= $timezone === $selectedTimezone ? 'selected' : '' ?>><?= $timezone ?></option>
                     <?php endforeach; ?>
                 </select>
                 <button type="submit">Apply</button>
             </form>
 
-    <!-- Sorting and Filtering Form -->
-    <form method="post" action="retrieve.php">
-        <label for="email">Filter by Email:</label>
-        <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($filterEmail); ?>">
+            <h3>Sorting and Filtering</h3>
 
-        <label for="actor">Filter by Actor:</label>
-        <input type="text" id="actor" name="actor" value="<?php echo htmlspecialchars($filterActor); ?>">
+                <!-- Sorting and Filtering Form -->
+                <form method="post" action="retrieve.php">
+                    <label for="email">Filter by Email:</label>
+                    <input type="text" id="email" name="email" value="<?= htmlspecialchars($filterEmail) ?>">
 
-        <label for="verb">Filter by Verb:</label>
-        <input type="text" id="verb" name="verb" value="<?php echo htmlspecialchars($filterVerb); ?>">
+                    <label for="actor">Filter by Actor:</label>
+                    <input type="text" id="actor" name="actor" value="<?= htmlspecialchars($filterActor) ?>">
 
-        <!-- Wrap "Sort by:" in a div -->
-        <div class="sort-group">
-            <label for="sort">Sort by:</label>
-            <select id="sort" name="sort">
-                <option value="timestamp" <?php echo ($sortBy === 'timestamp') ? 'selected' : ''; ?>>Timestamp</option>
-                <option value="actor" <?php echo ($sortBy === 'actor') ? 'selected' : ''; ?>>Actor</option>
-            </select>
+                    <label for="verb">Filter by Verb:</label>
+                    <input type="text" id="verb" name="verb" value="<?= htmlspecialchars($filterVerb) ?>">
 
-        <label for="sortOrder">Sort Order:</label>
-        <select id="sortOrder" name="sortOrder">
-            <option value="ASC" <?php echo ($sortOrder === 'ASC') ? 'selected' : ''; ?>>Ascending</option>
-            <option value="DESC" <?php echo ($sortOrder === 'DESC') ? 'selected' : ''; ?>>Descending</option>
-        </select>
+                    <label for="course">Filter by Course:</label>
+                    <input type="text" id="courseName" name="courseName" value="<?= htmlspecialchars($filterCourse) ?>">
 
-        <button type="submit">Apply Filters</button>
-        </div>
-    </form>
+                    <!-- Wrap "Sort by:" in a div -->
+                    <div class="sort-group">
+                        <label for="sort">Sort By:</label>
+                        <select id="sort" name="sort">
+                            <option value="timestamp" <?= $sortBy === 'timestamp' ? 'selected' : '' ?>>Timestamp</option>
+                            <option value="actor" <?= $sortBy === 'actor' ? 'selected' : '' ?>>Actor</option>
+                            <option value="courseName" <?= $sortBy === 'courseName' ? 'selected' : '' ?>>Course Name</option>
+                            <option value="courseId" <?= $sortBy === 'courseId' ? 'selected' : '' ?>>Course ID</option>
+                        </select>
 
+                    <label for="sortOrder">Sort Order:</label>
+                        <select id="sortOrder" name="sortOrder">
+                            <option value="ASC" <?= $sortOrder === 'ASC' ? 'selected' : '' ?>>Ascending</option>
+                            <option value="DESC" <?= $sortOrder === 'DESC' ? 'selected' : '' ?>>Descending</option>
+                        </select>
 
+                    <button type="submit">Apply Filters</button>
+                    </div>
+                </form>
 
-            <!-- Display the table -->
-            <table id="statementsTable">
+            
+            <!-- Data Table -->
+            <table id="statementsTable" class="display">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Statement ID</th>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
                         <th>Actor</th>
                         <th>Verb</th>
                         <th>Object</th>
                         <th>Result</th>
                         <th>Timestamp</th>
+                        <th>Statement ID</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($statements as $statement): ?>
+                    <?php foreach ($statements as $row): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($statement['id']); ?></td>
-                            <td><?php echo htmlspecialchars($statement['statement_id']); ?></td>
-                            <td><?php echo formatActor($statement['actor']); ?></td>
-                            <td><?php echo formatVerb($statement['verb']); ?></td>
-                            <td><?php echo formatObject($statement['object']); ?></td>
-                            <td><?php echo formatResult($statement['result'] ?? 'N/A'); ?></td>
-                            <td><?php echo formatTimestamp($statement['timestamp'], $selectedTimezone); ?></td>
+                            <td><?= htmlspecialchars($row['id']) ?></td>
+                            <td><?= htmlspecialchars($row['courseId'] ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($row['courseName'] ?? 'N/A') ?></td>
+                            <td><?= formatActor($row['actor']) ?></td>
+                            <td><?= formatVerb($row['verb']) ?></td>
+                            <td><?= formatObject($row['object']) ?></td>
+                            <td><?= formatResult($row['result'] ?? 'N/A') ?></td>
+                            <td><?= formatTimestamp($row['timestamp'], $selectedTimezone) ?></td>
+                            <td><?= htmlspecialchars($row['statement_id']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -291,15 +363,42 @@ if (isset($_POST['export'])) {
                 <div class="row-limit">
                     <label for="rowLimit">Show:</label>
                     <select id="rowLimit" name="rowLimit">
-                        <option value="10" <?php echo ($rowLimit == 10) ? 'selected' : ''; ?>>10 rows</option>
-                        <option value="20" <?php echo ($rowLimit == 20) ? 'selected' : ''; ?>>20 rows</option>
-                        <option value="50" <?php echo ($rowLimit == 50) ? 'selected' : ''; ?>>50 rows</option>
-                        <option value="100" <?php echo ($rowLimit == 100) ? 'selected' : ''; ?>>100 rows</option>
+                        <option value="10" <?= $rowLimit === 10 ? 'selected' : '' ?>>10</option>
+                        <option value="20" <?= $rowLimit === 20 ? 'selected' : '' ?>>20</option>
+                        <option value="50" <?= $rowLimit === 50 ? 'selected' : '' ?>>50</option>
+                        <option value="100" <?= $rowLimit === 100 ? 'selected' : '' ?>>100</option>
                     </select>
+                    <input type="hidden" name="page" value="<?= $currentPage ?>">
                     <button type="submit">Apply</button>
                 </div>
             </form>
+            <!-- Container for Centering -->
+            <div class="form-container">
+                <!-- Pagination Links -->
+                <form method="post" action="retrieve.php" id="paginationForm">
+                    <input type="hidden" name="email" value="<?= htmlspecialchars($filterEmail) ?>">
+                    <input type="hidden" name="actor" value="<?= htmlspecialchars($filterActor) ?>">
+                    <input type="hidden" name="verb" value="<?= htmlspecialchars($filterVerb) ?>">
+                    <input type="hidden" name="courseName" value="<?= htmlspecialchars($filterCourse) ?>">
+                    <input type="hidden" name="sort" value="<?= htmlspecialchars($sortBy) ?>">
+                    <input type="hidden" name="sortOrder" value="<?= htmlspecialchars($sortOrder) ?>">
+                    <input type="hidden" name="rowLimit" value="<?= htmlspecialchars($rowLimit) ?>">
+                    <input type="hidden" name="timezone" value="<?= htmlspecialchars($selectedTimezone) ?>">
+                    <input type="hidden" name="page" value="<?= $currentPage ?>">
 
+                    <div class="pagination">
+                        <?php if ($currentPage > 1): ?>
+                            <a href="javascript:void(0);" onclick="document.getElementById('paginationForm').elements['page'].value = <?= $currentPage - 1; ?>; document.getElementById('paginationForm').submit();">Previous</a>
+                        <?php endif; ?>
+                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                            <a href="javascript:void(0);" onclick="document.getElementById('paginationForm').elements['page'].value = <?= $i; ?>; document.getElementById('paginationForm').submit();"><?= $i; ?></a>
+                        <?php endfor; ?>
+                        <?php if ($currentPage < $totalPages): ?>
+                            <a href="javascript:void(0);" onclick="document.getElementById('paginationForm').elements['page'].value = <?= $currentPage + 1; ?>; document.getElementById('paginationForm').submit();">Next</a>
+                        <?php endif; ?>
+                    </div>
+                </form>
+            </div>
             <!-- Export buttons -->
             <form method="post" action="retrieve.php">
                 <button type="submit" name="export" value="csv">
@@ -312,20 +411,22 @@ if (isset($_POST['export'])) {
         </main>
     </div>
     <footer>
-        <p>&copy; 2024 <a href="https://lukosejoseph.com" target="_blank" rel="noopener noreferrer">LukoseJoseph.com</a>. All Rights Reserved.</p>
+        <p>&copy; <?= date('Y') ?> Discovery LRS. All rights reserved.</p>
     </footer>
     <script>
         $(document).ready( function () {
             $('#statementsTable').DataTable({
                 paging: true,
-                searching: false,
-                info: true,
-                autoWidth: false,
-                columnDefs: [
-                    { orderable: true, targets: '_all' }
-                ]
+                searching: true,
+                ordering: true,
+                info: true
             });
         });
+        function changePage(pageNumber) {
+            var form = document.getElementById('paginationForm');
+            form.page.value = pageNumber;
+            form.submit();
+    }
     </script>
 </body>
 </html>

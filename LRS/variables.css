@@ -6,6 +6,7 @@
     --text-color: #5a6b6e;                         /* Muted teal for text */
     --text-color-light: #ffffff;
     --background-color: rgba(247, 245, 251, 0.98); /* Very light lavender background */
+    --background-color-dark: rgba(155, 176, 182, 0.98);
     --border-color: rgba(90, 107, 110, 0.18);      /* Subtle borders */
     --box-shadow-color: rgba(90, 107, 110, 0.1);   /* Soft shadows */
     --accent-color: rgba(246, 185, 185, 0.9);      /* Soft pastel pink accent */
